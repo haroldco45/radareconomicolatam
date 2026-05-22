@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Radar Económico LATAM | PWA Educativa</title>
   
-  <!-- Meta etiquetas para PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1f2937">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,9 +18,10 @@
       --bg-nav: #111827;
       --text-main: #f3f4f6;
       --text-muted: #9ca3af;
-      --accent-neon: #10b981; /* Verde esmeralda para éxitos/estabilidad */
-      --accent-alert: #ef4444; /* Rojo para colapso/inflación */
-      --accent-blue: #3b82f6; /* Azul para datos técnicos */
+      --accent-neon: #10b981; 
+      --accent-alert: #ef4444; 
+      --accent-blue: #3b82f6; 
+      --accent-gold: #f59e0b;
     }
 
     * {
@@ -34,10 +34,9 @@
     body {
       background-color: var(--bg-main);
       color: var(--text-main);
-      padding-bottom: 70px; /* Espacio para la barra de navegación inferior */
+      padding-bottom: 80px; 
     }
 
-    /* Encabezado */
     header {
       background-color: var(--bg-nav);
       padding: 20px;
@@ -60,7 +59,6 @@
       margin-top: 4px;
     }
 
-    /* Contenedor Principal */
     main {
       max-width: 800px;
       margin: 20px auto;
@@ -81,35 +79,49 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Tarjetas y Contenedores */
     .card {
       background-color: var(--bg-card);
       border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
+      padding: 22px;
+      margin-bottom: 25px;
       border: 1px solid #1e293b;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     }
 
     h2 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
       border-left: 4px solid var(--accent-blue);
       padding-left: 10px;
+      color: #fff;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
     }
 
     p {
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.98rem;
+      line-height: 1.65;
       color: var(--text-muted);
-      margin-bottom: 15px;
+      margin-bottom: 14px;
+      text-align: justify;
     }
 
-    /* Simulador Interactivo */
+    strong {
+      color: #fff;
+    }
+
+    /* Simulador Elementos */
     .sim-control-group {
       margin-bottom: 15px;
       background: rgba(255,255,255,0.02);
-      padding: 12px;
+      padding: 14px;
       border-radius: 8px;
       display: flex;
       justify-content: space-between;
@@ -158,22 +170,21 @@
       margin-top: 10px;
     }
 
-    /* KPI de Indicadores (Barras de Progreso) */
     .metric-container {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
 
     .metric-label {
       display: flex;
       justify-content: space-between;
-      font-size: 0.9rem;
-      margin-bottom: 5px;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
     }
 
     .progress-bar {
       background-color: #1e293b;
       border-radius: 6px;
-      height: 12px;
+      height: 14px;
       overflow: hidden;
     }
 
@@ -184,18 +195,38 @@
     }
 
     .alert-banner {
-      background-color: rgba(239, 68, 68, 0.15);
+      background-color: rgba(239, 68, 68, 0.12);
       border: 1px solid var(--accent-alert);
       color: #fca5a5;
-      padding: 15px;
+      padding: 16px;
       border-radius: 8px;
       margin-top: 20px;
       display: none;
-      font-weight: bold;
-      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
-    /* Navegación Inferior Estilo App */
+    /* Enfoque Educativo: Bloques de Impacto Crítico */
+    .analysis-box {
+      background: rgba(30, 41, 59, 0.5);
+      border-left: 4px solid var(--accent-alert);
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .analysis-box.secure {
+      border-left-color: var(--accent-neon);
+    }
+
+    .analysis-title {
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    /* Navegación Inferior */
     nav.bottom-nav {
       position: fixed;
       bottom: 0;
@@ -219,7 +250,7 @@
       flex-direction: column;
       align-items: center;
       cursor: pointer;
-      width: 25%;
+      width: 33%;
       transition: color 0.2s;
     }
 
@@ -234,24 +265,10 @@
       color: var(--accent-blue);
     }
 
-    /* Listas y viñetas dinámicas */
-    .badge-list {
-      list-style: none;
-      margin-top: 10px;
-    }
-
-    .badge-list li {
-      background: rgba(59, 130, 246, 0.1);
-      border-left: 3px solid var(--accent-blue);
-      padding: 8px 12px;
-      margin-bottom: 8px;
-      font-size: 0.9rem;
-      border-radius: 0 6px 6px 0;
-    }
-
-    .badge-list.danger li {
-      background: rgba(239, 68, 68, 0.1);
-      border-left-color: var(--accent-alert);
+    .divider {
+      height: 1px;
+      background: #1e293b;
+      margin: 20px 0;
     }
   </style>
 </head>
@@ -264,7 +281,6 @@
 
   <main>
     
-    <!-- SECCIÓN 1: SIMULADOR -->
     <section id="view-simulador" class="view-section active">
       <div class="card">
         <h2>Laboratorio de Decisiones</h2>
@@ -327,43 +343,62 @@
         </div>
 
         <div id="colapse-banner" class="alert-banner">
-          ⚠️ ALERTA DE COLAPSO: La destrucción del incentivo privado y la devaluación de la moneda eliminan el poder de compra real de los subsidios otorgados.
+          ⚠️ <strong>Efecto en Cadena Detectado:</strong> La destrucción del incentivo privado y la devaluación artificial de la moneda eliminan por completo el poder de compra real de los subsidios otorgados. Las dádivas se diluyen porque las cosas suben más rápido de lo que el gobierno imprime.
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 2: CASOS REALES -->
     <section id="view-casos" class="view-section">
       <div class="card">
-        <h2>El Espejismo de la Tarjeta</h2>
-        <p>A menudo, los subsidios estatales inmediatos desconectados de la productividad real funcionan como herramientas de control electoral en las clases desfavorecidas. Al no existir riqueza que respalde ese dinero emitido artificialmente, los precios aumentan de inmediato.</p>
-        <ul class="badge-list danger">
-          <li><strong>Venezuela:</strong> La hiperinflación convirtió los bonos estatales en montos insuficientes para adquirir un solo día de alimentación básica.</li>
-          <li><strong>Cuba:</strong> La cartilla de racionamiento pasó de cubrir necesidades mensuales a lapsos mínimos, forzando la dependencia del mercado informal dolarizado.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>El Caso de Bolivia</h2>
-        <p>El modelo centrado en los recursos naturales demostró éxito transitorio mientras los precios internacionales del gas se mantuvieron en niveles máximos. Sin embargo, la falta de inversión y el control de divisas generó un desabastecimiento crítico de moneda extranjera y combustibles a largo plazo.</p>
+        <h2>La Anatomía del Espejismo Económico</h2>
+        <p>Cuando un gobierno ofrece subsidios masivos y directos a las clases menos favorecidas sin que exista un incremento en la producción de bienes del país, se activa una trampa matemática invisible para el ciudadano común pero devastadora a mediano plazo.</p>
+        
+        <div class="analysis-box">
+          <div class="analysis-title">La Trampa de las Dádivas</div>
+          <p>Si a una población se le entrega el doble de dinero en bonos, pero el país sigue produciendo la misma cantidad de arroz, carne y leche, el resultado no es más riqueza: es escasez. Al haber más dinero compitiendo por los mismos productos, los precios se disparan. El subsidio de hoy se convierte en el hambre del mañana debido al impuesto oculto más agresivo de todos: <strong>la inflación</strong>.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3>Cuba: Centralización Absoluta (1959 - 2026)</h3>
+        <p>El modelo cubano apostó por la eliminación total del mercado libre y la propiedad privada, centralizando la producción y distribución en manos del Estado. Si bien históricamente se justificó bajo la bandera de la soberanía y la equidad social, el análisis estructural contemporáneo revela un colapso sistémico:</p>
+        <p>La famosa <strong>Libreta de Abastecimiento</strong> pasó de ser un seguro alimentario a una ración simbólica que apenas cubre una fracción mínima del mes. Sin incentivos para la inversión privada, las plantas eléctricas colapsaron, generando apagones crónicos, y el país enfrenta hoy su mayor crisis migratoria, con miles de jóvenes huyendo debido a la falta total de oportunidades y libertad económica.</p>
+
+        <h3>Venezuela: El Control que Destruyó la Moneda</h3>
+        <p>A partir de la década de 2000, Venezuela implementó el "Socialismo del Siglo XXI". Aprovechando el auge petrolero más grande de su historia, el gobierno financió una inmensa red de subsidios directos mientras fijaba por ley el precio de los alimentos e intervenía o expropiaba miles de empresas privadas de distribución y producción.</p>
+        <p><strong>El resultado histórico:</strong> Cuando el precio del petróleo cayó, el gobierno no tenía cómo sostener los subsidios y comenzó a imprimir dinero sin respaldo. Las empresas intervenidas dejaron de producir por ineficiencia. Esto generó una escasez destructiva y una hiperinflación que pulverizó el valor del Bolívar, transformando los bonos gubernamentales en simples papeles sin valor de compra y forzando el éxodo de más de 7 millones de ciudadanos.</p>
+
+        <h3>Nicaragua y Bolivia: El Límite de los Recursos</h3>
+        <p><strong>Nicaragua</strong> centralizó el poder político destruyendo la seguridad jurídica, lo que ahuyentó la inversión extranjera y confinó su economía al aislamiento y la dependencia de remesas familiares. Por su parte, <strong>Bolivia</strong> experimentó un crecimiento inicial gracias a la nacionalización de los hidrocarburos (gas natural). Sin embargo, al gastar los ingresos en burocracia y subsidios estatales en lugar de incentivar la exploración de nuevos pozos por parte de privados, las reservas de gas se agotaron. Hoy el país sufre una escasez crítica de dólares y combustibles, demostrando el límite de los modelos basados puramente en el gasto público.</p>
       </div>
     </section>
 
-    <!-- SECCIÓN 3: COLOMBIA -->
     <section id="view-colombia" class="view-section">
       <div class="card">
-        <h2>El Escudo de la Institucionalidad</h2>
-        <p>¿Por qué Colombia cuenta con dinámicas distintas ante proyectos de centralización absoluta? El sistema de diseño constitucional genera contrapesos claros:</p>
-        <ul class="badge-list">
-          <li><strong>Independencia del Banco de la República:</strong> El Ejecutivo no puede ordenar de forma unilateral la impresión de papel moneda para financiar programas de gobierno.</li>
-          <li><strong>Control de las Cortes:</strong> Cualquier modificación estructural sobre la propiedad o los derechos económicos fundamentales requiere revisión constitucional rigurosa.</li>
-          <li><strong>Estructura Plural:</strong> Las reformas sustanciales deben evaluarse y consensuarse obligatoriamente en los marcos legislativos del Congreso.</li>
-        </ul>
+        <h2>El Escudo de la Institucionalidad Colombiana</h2>
+        <p>A menudo surge el debate sobre si Colombia podría deslizarse de manera descontrolada hacia los escenarios económicos críticos observados en los países vecinos. La respuesta técnica reside en su diseño constitucional, estructurado específicamente para evitar la concentración absoluta del poder y proteger la estabilidad de los mercados.</p>
+        
+        <div class="analysis-box secure">
+          <div class="analysis-title">¿Por qué las instituciones bloquean un colapso rápido?</div>
+          <p>A diferencia de los procesos constituyentes que desmantelaron los controles en Venezuela o Bolivia, el orden legal colombiano cuenta con tres muros de contención independientes que operan de forma automática, independientemente de la ideología del presidente de turno.</p>
+        </div>
+
+        <h3>1. Independencia Auténtica del Banco de la República</h3>
+        <p>Este es el pilar técnico más importante. En los modelos que colapsaron, el presidente de la república tomó el control directo de la banca central y la obligó a imprimir billetes para pagar los programas sociales. En Colombia, la Constitución de 1991 blindó al <strong>Banco de la República</strong>.</p>
+        <p>Su junta directiva toma decisiones de forma autónoma con un único mandato técnico: defender el poder adquisitivo de la moneda y mantener la inflación controlada. Ningún mandatario puede ordenar la emisión desmedida de pesos por decreto para financiar promesas de campaña.</p>
+
+        <h3>2. El Control Estricto de las Altas Cortes</h3>
+        <p>Cualquier intento de reformar de manera radical las bases económicas —como la expropiación express, la alteración forzosa de la propiedad privada o decretar controles obligatorios de precios que ahoguen el comercio— tiene que someterse obligatoriamente al filtro de la <strong>Corte Constitucional</strong>.</p>
+        <p>Este tribunal funciona como un árbitro implacable: si una ley aprobada vulnera las libertades individuales, el libre mercado o los procedimientos democráticos, es declarada inexequible (se tumba), manteniendo estables las reglas del juego para la inversión.</p>
+
+        <h3>3. El Congreso como Espacio de Coexistencia y Freno</h3>
+        <p>Las reformas de gran calado, como los cambios estructurales a la salud, las pensiones o el régimen laboral, no se imponen de forma vertical. Colombia posee un sistema legislativo donde las diferentes fuerzas políticas, gremios económicos y la sociedad civil debaten públicamente.</p>
+        <p>Esto obliga a que los proyectos del Ejecutivo se modifiquen, moderen o incluso se archiven si no demuestran viabilidad fiscal, impidiendo transformaciones unilaterales que pongan en riesgo el empleo privado o la sostenibilidad económica de la nación.</p>
       </div>
     </section>
 
   </main>
 
-  <!-- Barra de Navegación Fija -->
   <nav class="bottom-nav">
     <button class="nav-item active" onclick="switchView('simulador')">
       <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-2v-4H6v-2h4V8h2v4h4v2z"/></svg>
@@ -390,29 +425,24 @@
       const currentYear = parseInt(document.getElementById('sim-year').value);
       document.getElementById('year-val').innerText = currentYear;
 
-      // Valores iniciales estables
       let inflacion = 3;
       let pobreza = 25;
       let reservas = 100;
 
-      // Factor de gravedad por políticas acumuladas
       let factorGravedad = 0;
       if (polSubsidios) factorGravedad += 1.5;
       if (polPrecios) factorGravedad += 2.0;
       if (polEmision) factorGravedad += 3.5;
       if (polNacionaliza) factorGravedad += 3.0;
 
-      // Progresión matemática con base en los años seleccionados
       inflacion = Math.min(500, Math.round(3 + (factorGravedad * currentYear * currentYear * 4)));
       pobreza = Math.min(90, Math.round(25 + (factorGravedad * currentYear * 2.8)));
       reservas = Math.max(5, Math.round(100 - (factorGravedad * currentYear * 4.5)));
 
-      // Renderización en interfaz de usuario
       document.getElementById('val-inflacion').innerText = inflacion >= 500 ? '+500% (Hiperinflación)' : `${inflacion}%`;
       document.getElementById('val-pobreza').innerText = `${pobreza}%`;
       document.getElementById('val-reservas').innerText = `${reservas}%`;
 
-      // Actualizar barras visuales
       document.getElementById('bar-inflacion').style.width = `${Math.min(100, inflacion / 5)}%`;
       document.getElementById('bar-inflacion').style.backgroundColor = inflacion > 50 ? 'var(--accent-alert)' : 'var(--accent-neon)';
 
@@ -421,7 +451,6 @@
       document.getElementById('bar-reservas').style.width = `${reservas}%`;
       document.getElementById('bar-reservas').style.backgroundColor = reservas < 40 ? 'var(--accent-alert)' : 'var(--accent-neon)';
 
-      // Mostrar alerta si los indicadores entran en zona crítica
       const banner = document.getElementById('colapse-banner');
       if (factorGravedad >= 6 && currentYear >= 3) {
         banner.style.display = 'block';
@@ -491,7 +520,6 @@
 
       notificar(tipo, cuerpo) {
         console.log(`[KPI Enviado] ${tipo}:`, cuerpo);
-        // Aquí puedes vincular un fetch POST hacia tu API en Railway/Firebase en producción.
       }
     };
 
